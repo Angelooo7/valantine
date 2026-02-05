@@ -78,7 +78,7 @@ yesBtn.addEventListener("click", () => {
         mainContent.style.opacity = "1";
 
         // Update UI
-        questionText.textContent = "I knew it! Love you! 💖";
+        questionText.textContent = "I knew itttt madam jiiii…..love you toooo🥳🥳🥳";
         questionText.style.color = "#ff4081";
 
         // Update Image
