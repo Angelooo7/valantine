@@ -84,10 +84,10 @@ yesBtn.addEventListener("click", () => {
         // Update Image
         mainImage.src = "celebration.png";
 
-        // Play Song (01:33 to 01:50)
+        // Play Song (01:33 to 03:03)
         if (loveSong) {
             const startPlay = () => {
-                loveSong.currentTime = 93;
+                loveSong.currentTime = 93; // 1:33
                 loveSong.play().catch(e => {
                     console.error("Music failed to play:", e);
                     // Fallback: show a small play button if browser still blocks it
@@ -99,12 +99,13 @@ yesBtn.addEventListener("click", () => {
                     };
                     mainContent.appendChild(playHint);
                 });
-
+        
                 setTimeout(() => {
                     loveSong.pause();
                     loveSong.currentTime = 93;
-                }, 17000);
+                }, 90000); // 90 seconds → ends at 3:03
             };
+        }
 
             if (loveSong.readyState >= 2) { // HAVE_CURRENT_DATA
                 startPlay();
