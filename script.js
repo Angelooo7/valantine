@@ -84,36 +84,22 @@ yesBtn.addEventListener("click", () => {
         // Update Image
         mainImage.src = "celebration.png";
 
-        // Play Song (01:22 to 03:00)
+        // Play edited song (full length)
         if (loveSong) {
-            const startPlay = () => {
-                loveSong.currentTime = 82; // 1:22
-                loveSong.play().catch(e => {
-                    console.error("Music failed to play:", e);
+            loveSong.play().catch(e => {
+                console.error("Music failed to play:", e);
         
-                    const playHint = document.createElement('div');
-                    playHint.innerHTML =
-                        '<button style="background:none; border:none; cursor:pointer;">🎵 Tap to hear music</button>';
+                const playHint = document.createElement('div');
+                playHint.innerHTML =
+                    '<button style="background:none; border:none; cursor:pointer;">🎵 Tap to hear music</button>';
         
-                    playHint.onclick = () => {
-                        loveSong.play();
-                        playHint.remove();
-                    };
+                playHint.onclick = () => {
+                    loveSong.play();
+                    playHint.remove();
+                };
         
-                    mainContent.appendChild(playHint);
-                });
-        
-                setTimeout(() => {
-                    loveSong.pause();
-                    loveSong.currentTime = 82;
-                }, 98000); // 98 seconds → ends at 3:00
-            };
-        
-            if (loveSong.readyState >= 2) {
-                startPlay();
-            } else {
-                loveSong.addEventListener('canplay', startPlay, { once: true });
-            }
+                mainContent.appendChild(playHint);
+            });
         }
 
 
