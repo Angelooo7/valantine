@@ -85,34 +85,37 @@ yesBtn.addEventListener("click", () => {
         mainImage.src = "celebration.png";
 
         // Play Song (01:33 to 03:03)
-        if (loveSong) {
-            const startPlay = () => {
-                loveSong.currentTime = 93; // 1:33
-                loveSong.play().catch(e => {
-                    console.error("Music failed to play:", e);
-                    // Fallback: show a small play button if browser still blocks it
-                    const playHint = document.createElement('div');
-                    playHint.innerHTML = '<button style="background:none; border:none; cursor:pointer;">🎵 Tap to hear music</button>';
-                    playHint.onclick = () => {
-                        loveSong.play();
-                        playHint.remove();
-                    };
-                    mainContent.appendChild(playHint);
-                });
-        
-                setTimeout(() => {
-                    loveSong.pause();
-                    loveSong.currentTime = 93;
-                }, 90000); // 90 seconds → ends at 3:03
-            };
-        }
+if (loveSong) {
+    const startPlay = () => {
+        loveSong.currentTime = 93; // 1:33
+        loveSong.play().catch(e => {
+            console.error("Music failed to play:", e);
 
-            if (loveSong.readyState >= 2) { // HAVE_CURRENT_DATA
-                startPlay();
-            } else {
-                loveSong.addEventListener('canplay', startPlay, { once: true });
-            }
-        }
+            const playHint = document.createElement('div');
+            playHint.innerHTML =
+                '<button style="background:none; border:none; cursor:pointer;">🎵 Tap to hear music</button>';
+
+            playHint.onclick = () => {
+                loveSong.play();
+                playHint.remove();
+            };
+
+            mainContent.appendChild(playHint);
+        });
+
+        setTimeout(() => {
+            loveSong.pause();
+            loveSong.currentTime = 93;
+        }, 90000); // ends at 3:03
+    };
+
+    if (loveSong.readyState >= 2) {
+        startPlay();
+    } else {
+        loveSong.addEventListener('canplay', startPlay, { once: true });
+    }
+}
+
 
         // Remove the button group entirely to prevent repeat clicks
         const btnGroup = document.querySelector('.btn-group');
