@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <!-- Background Elements -->
+    <div class="background-hearts"></div>
+
+    <div class="container" id="questionContainer">
+        <div id="heartLoader" class="loader">❤️</div>
+        <div id="mainContent">
+            <div id="imageContainer">
+                <img src="hero.png" alt="Cute Bear" id="mainImage">
+            </div>
+            <h1 id="questionText">Do you love me?</h1>
+            <div class="btn-group">
+                <button id="yesBtn">Yes</button>
+                <button id="noBtn">No</button>
+            </div>
+            <div id="clickMeContainer" style="display: none; margin-top: 20px;">
+                <button id="clickMeBtn" class="premium-btn">Click Me ✨</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Letter Overlay -->
+    <div id="letterOverlay" class="letter-overlay">
+        <div class="letter-content">
+            <button class="close-letter" id="closeLetter">&times;</button>
+            <div class="video-container">
+                <video id="letterVideo" loop muted playsinline>
+                    <source src="gif.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="poem-text">
+                <p>"If I could, I would pause time in that golden hour,<br>
+                    place you beside me, and let the world fade into quiet colors.</p>
+
+                <p>Your eyes — they don’t just shine, they score on me every time,<br>
+                    no defense strong enough, no distance far enough.</p>
+
+                <p>So this Valentine’s, I don’t need a trophy or a win —<br>
+                    having you is already my championship."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="loveSong" preload="auto">
+        <source src="song.mpeg" type="audio/mpeg">
+        <source src="song.mpeg" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

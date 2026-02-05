@@ -1,0 +1,279 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background floating hearts animation */
+.background-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.background-hearts::before {
+    content: "❤️";
+    position: absolute;
+    font-size: 2rem;
+    animation: floatHearts 10s infinite ease-in-out;
+    left: 10%;
+    opacity: 0.5;
+}
+
+.background-hearts::after {
+    content: "💖";
+    position: absolute;
+    font-size: 3rem;
+    animation: floatHearts 15s infinite ease-in-out 2s;
+    right: 15%;
+    opacity: 0.4;
+}
+
+@keyframes floatHearts {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 350px;
+    max-width: 90%;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+#imageContainer img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+    animation: floatImage 3s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+h1 {
+    color: #d81b60;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    position: relative;
+    /* Context for absolute positioning of 'No' button if needed */
+}
+
+button {
+    padding: 12px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#yesBtn {
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+    color: white;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
+}
+
+#noBtn {
+    background: white;
+    color: #ff758c;
+    border: 2px solid #ff758c;
+}
+
+#noBtn:hover {
+    background: #fff0f3;
+}
+
+.loader {
+    display: none;
+    font-size: 60px;
+    animation: pulseLoader 1s infinite alternate;
+}
+
+@keyframes pulseLoader {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1.3);
+        opacity: 1;
+        text-shadow: 0 0 20px #ff758c;
+    }
+}
+
+/* Premium Button Styling */
+.premium-btn {
+    background: linear-gradient(45deg, #ffd700, #ff8c00);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
+    transition: all 0.3s ease;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
+    }
+
+    to {
+        box-shadow: 0 0 20px #ffd700, 0 0 40px #ff8c00;
+        transform: scale(1.05);
+    }
+}
+
+/* Letter Overlay Styling */
+.letter-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.letter-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.letter-content {
+    background: white;
+    width: 85%;
+    max-width: 500px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+    transform: scale(0.8);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.letter-overlay.active .letter-content {
+    transform: scale(1);
+}
+
+.video-container video {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 3px solid #ff758c;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.poem-text {
+    font-family: 'Poppins', sans-serif;
+    color: #444;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.poem-text p {
+    margin-bottom: 25px;
+    font-style: italic;
+    background: linear-gradient(to right, #666, #333);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.close-letter {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff758c;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.close-letter:hover {
+    background: #d81b60;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
